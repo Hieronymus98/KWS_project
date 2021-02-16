@@ -59,8 +59,11 @@ def preprocess_dataset(dataset_path, json_path, num_mfcc=13, n_fft=512, hop_leng
                     if highest < len(signal):
                         highest = len(signal)
                         
-                    
-                    np.pad(signal, (0,SAMPLES_TO_CONSIDER-len(signal)), 'constant', constant_values=0)
+                    x = []
+                    for q in range(len(signal), SAMPLES_TO_CONSIDER):
+                        x.append(0)
+                    signal=np.append(signal, x)
+                    print(len(signal))
 
                     
                 # ensure the audio file is at least 1 sec
@@ -86,3 +89,4 @@ def preprocess_dataset(dataset_path, json_path, num_mfcc=13, n_fft=512, hop_leng
         
 if __name__ == "__main__":
     preprocess_dataset(DATASET_PATH, JSON_PATH)
+    
