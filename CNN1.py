@@ -73,7 +73,7 @@ def build_model(input_shape, loss="sparse_categorical_crossentropy", learning_ra
 
     # flatten output and feed into dense layer
     model.add(tf.keras.layers.Flatten())
-    model.add(tf.keras.layers.Dense(64, activation='relu'))
+    model.add(tf.keras.layers.Dense(32, activation='relu'))
     tf.keras.layers.Dropout(0.3)
 
     # softmax output layer
